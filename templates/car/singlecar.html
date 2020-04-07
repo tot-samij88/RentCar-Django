@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block content %}
+{% include "partials/_header_about.html" %}
+
+
+<div class="container mmm">
+    <div class="row">
+        <div class="col-12">
+            <div class="single-text">
+                <h3>{{car.vendor}} {{car.model}}</a></h3>
+                <div class="rating">
+                    <span class="icon-star text-warning">{{car.rating}}</span>
+                </div>
+                <div class="rent-price"><span class="rent-price1">{{car.price}}</span>$/day</div>
+            </div>
+            <div class="info_by_manager"></div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-between mid">
+        <div class="col-3 seler">
+            {% if managers %}
+            <div class="post-entry-1 h-100 person-1 ">
+
+                <img src="{{ managers.photo.url }}" alt="Image" class="img-fluid">
+
+                <div class="post-entry-1-contents">
+                    <span class="meta">{{ managers.position }}</span>
+                    <h2>{{ managers.name }}</h2>
+                    <p>{{ managers.email }}</p>
+                    <i class="fab fa-telegram tg"><span class="tg-vb">&nbsp;{{ managers.tg }}</span></i><br>
+                    <i class="fab fa-viber vb"><span class="tg-vb">{{ managers.phone1 }}</span></i><br>
+                    <i class="fab fa-viber vb"><span class="tg-vb">{{ managers.phone2 }}</span></i><br>
+                    <i class="fab fa-viber vb"><span class="tg-vb">{{ managers.phone3 }}</span></i>
+                </div>
+
+            </div>
+            {% else %}
+            <div class="col-md-2">
+                <p>No Managers Aviable</p>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-8 ofset-2">
+            <a href="#" class="btn btn-primary custom-prev">Previous</a>
+            <img src="{{car.photo_main.url}}" alt="Image" class="img-single-car ">
+            <a href="#" class="btn btn-primary custom-next">Next</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="offset-1  d-flex action">
+                <a href="{% url 'contact'%}" class="btn btn-primary">Rent Now</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7 offset-5">
+                <h3>{{car.vendor}} {{car.model}} 1996</a></h3>
+                <ul class="specs">
+                    <li>
+                        <span>Color</span>
+                        <span class="spec">{{car.color}}</span>
+                    </li>
+                    <li>
+                        <span>Engine</span>
+                        <span class="spec">{{car.engine}}</span>
+                    </li>
+                    <li>
+                        <span>Minimun age</span>
+                        <span class="spec">{{car.minimum_age}}</span>
+                    </li>
+                    <li>
+                        <span>Doors</span>
+                        <span class="spec">{{car.doors}}</span>
+                    </li>
+                    <li>
+                        <span>Seats</span>
+                        <span class="spec">{{car.seats}}</span>
+                    </li>
+                    <li>
+                        <span>Transmision</span>
+                        <span class="spec">{{car.transmision}}</span>
+                    </li>
+                    <li>
+                        <span>Eat fuel</span>
+                        <span class="spec">{{car.fuel}} L/100km</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
