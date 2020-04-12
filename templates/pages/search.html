@@ -1,0 +1,135 @@
+{% extends "base.html"%}
+{% load static  %}
+{% block content %}
+<div class="site-section pt-0 pb-0 bg-light">
+    <div class="container topchek">
+        <div class="row">
+            <div class="col-12">
+                <form class="trip-form topchek" action="{% url 'search' %}">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <h3 class="m-0">Begin your trip here</h3>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                            <span class="text-primary">32</span> <span>cars available</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="cf-1">Vendor</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="vendor">
+                                <option value disabled selected>Vendor</option>
+                                {% for vendor in vendor_list %}
+                                <option value="{{vendor}}">{{vendor}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-2">Model</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="model">
+                                <option value disabled selected>Model</option>
+                                {% for model in model_list %}
+                                <option value="{{model}}">{{model}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-3">Engine</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="engine">
+                                <option value disabled selected>Engine</option>
+                                {% for engine in engine_list %}
+                                <option value="{{engine}}">{{engine}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Transmision</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="transmision">
+                                <option value disabled selected>Transmission</option>
+                                {% for transmission in transmission_list %}
+                                <option value="{{transmission}}">{{transmission}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="submit" value="Search" class="btn btn-primary">
+                            <input type="reset" value="reset" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <div class="row">
+                    {% if carlist %}
+                    {% for car in carlist %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="item-1">
+                            <a href="#"><img src="{{car.photo_main.url}}" alt="Image" class="img-index-car"></a>
+                            <div class="item-1-contents">
+                                <div class="text-center">
+                                    <h3><a href="#">{{car.vendor}} {{car.model}}</a></h3>
+                                    <div class="rating row d-flex justify-content-center">
+                                        {% if car.rating == 1 %}
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        {% elif car.rating == 2 %}
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        {% elif car.rating == 3 %}
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        {% elif car.rating == 4 %}
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        {% elif car.rating == 5 %}
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="rent-price"><span>{{car.price}}$/</span>day</div>
+                                </div>
+                                <ul class="specs">
+                                    <li>
+                                        <span>Doors</span>
+                                        <span class="spec">{{car.doors}}</span>
+                                    </li>
+                                    <li>
+                                        <span>Seats</span>
+                                        <span class="spec">{{car.seats}}</span>
+                                    </li>
+                                    <li>
+                                        <span>Transmision</span>
+                                        <span class="spec">{{car.transmision}}</span>
+                                    </li>
+                                    <li>
+                                        <span>Eat fuel</span>
+                                        <span class="spec">{{car.fuel}} L/100km</span>
+                                    </li>
+                                </ul>
+                                <div class="d-flex action">
+                                    <a href="{% url 'singlecar' car.id %}" class="btn btn-primary">Rent Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="col-1">
+
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

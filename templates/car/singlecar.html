@@ -9,8 +9,28 @@
         <div class="col-12">
             <div class="single-text">
                 <h3>{{car.vendor}} {{car.model}}</a></h3>
-                <div class="rating">
-                    <span class="icon-star text-warning">{{car.rating}}</span>
+                <div class="rating row singl-stars">
+                    {% if car.rating == 1 %}
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    {% elif car.rating == 2 %}
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    {% elif car.rating == 3 %}
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    {% elif car.rating == 4 %}
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    {% elif car.rating == 5 %}
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                    {% endif %}
                 </div>
                 <div class="rent-price"><span class="rent-price1">{{car.price}}</span>$/day</div>
             </div>
@@ -41,12 +61,42 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-8 ofset-2">
-            <a href="#" class="btn btn-primary custom-prev">Previous</a>
-            <img src="{{car.photo_main.url}}" alt="Image" class="img-single-car ">
-            <a href="#" class="btn btn-primary custom-next">Next</a>
+
+        <!-- Carousel here https://stackoverflow.com/questions/30119351/how-to-make-an-object-slider-in-django -->
+        <div class="col-9">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+                <div class="row">
+                    <a href="#myCarousel" class="btn btn-primary col-1 d-flex align-items-center pprev" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <div class="carousel-inner col-9 ">
+                        <div class="carousel-item active">
+                            <img class="img-single-car" src="{{ car.photo_main.url }}" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-single-car" src="{{ car.photo_1.url }}" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-single-car" src="{{ car.photo_2.url }}" alt="Third slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-single-car" src="{{ car.photo_3.url }}" alt="Third slide">
+                        </div>
+                    </div>
+                    
+                    <a href="#myCarousel" class="btn btn-primary custom-next col-1 d-flex align-items-center nnext" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+                </div>
+            </div>
         </div>
+
     </div>
+</div>
+</div>
 
 </div>
 
@@ -58,36 +108,36 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-7 offset-5">
+            <div class="col-8 offset-4">
                 <h3>{{car.vendor}} {{car.model}} 1996</a></h3>
                 <ul class="specs">
-                    <li>
-                        <span>Color</span>
-                        <span class="spec">{{car.color}}</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Color</span>
+                        <span class="spec about_deteil">{{car.color}}</span>
                     </li>
-                    <li>
-                        <span>Engine</span>
-                        <span class="spec">{{car.engine}}</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Engine</span>
+                        <span class="spec about_deteil">{{car.engine}}</span>
                     </li>
-                    <li>
-                        <span>Minimun age</span>
-                        <span class="spec">{{car.minimum_age}}</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Minimun age</span>
+                        <span class="spec about_deteil">{{car.minimum_age}}</span>
                     </li>
-                    <li>
-                        <span>Doors</span>
-                        <span class="spec">{{car.doors}}</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Doors</span>
+                        <span class="spec about_deteil">{{car.doors}}</span>
                     </li>
-                    <li>
-                        <span>Seats</span>
-                        <span class="spec">{{car.seats}}</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Seats</span>
+                        <span class="spec about_deteil">{{car.seats}}</span>
                     </li>
-                    <li>
-                        <span>Transmision</span>
-                        <span class="spec">{{car.transmision}}</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Transmision</span>
+                        <span class="spec about_deteil">{{car.transmision}}</span>
                     </li>
-                    <li>
-                        <span>Eat fuel</span>
-                        <span class="spec">{{car.fuel}} L/100km</span>
+                    <li class="d-flex justify-content-between list_for_deteil">
+                        <span class="Deteil">Eat fuel</span>
+                        <span class="spec about_deteil">{{car.fuel}} L/100km</span>
                     </li>
                 </ul>
             </div>

@@ -46,6 +46,10 @@
                                 href="{% url 'blog' %}" class="nav-link">Blog</a></li>
                         <li {% if 'contact' in request.path %} class="active" {% else %} {% endif %}><a
                                 href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                        <li {% if 'login' in request.path %} class="active" {% else %} {% endif %}><a
+                                href="{% url 'login' %}" class="nav-link">login</a></li>
+                        <li {% if 'register' in request.path %} class="active" {% else %} {% endif %}><a
+                                href="{% url 'register' %}" class="nav-link">register</a></li>
                     </ul>
                 </nav>
             </div>

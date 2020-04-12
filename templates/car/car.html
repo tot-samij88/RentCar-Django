@@ -13,8 +13,28 @@
                     <div class="item-1-contents">
                         <div class="text-center">
                             <h3><a href="#">{{car.vendor}} {{car.model}}</a></h3>
-                            <div class="rating">
-                                <i class="fas fa-star bbbbbb"></i>
+                            <div class="rating row d-flex justify-content-center">
+                                {% if car.rating == 1 %}
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                {% elif car.rating == 2 %}
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                {% elif car.rating == 3 %}
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                {% elif car.rating == 4 %}
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                {% elif car.rating == 5 %}
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                {% endif %}
                             </div>
 
                             <div class="rent-price"><span>{{car.price}}$/</span>day</div>

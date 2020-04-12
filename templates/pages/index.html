@@ -7,38 +7,57 @@
         <div class="row">
             <div class="col-12">
 
-                <form class="trip-form">
+                <form class="trip-form" action="{% url 'search' %}">
                     <div class="row align-items-center mb-4">
                         <div class="col-md-6">
                             <h3 class="m-0">Begin your trip here</h3>
                         </div>
                         <div class="col-md-6 text-md-right">
-                            <span class="text-primary">32</span> <span>cars available</span></span>
+                            <span class="text-primary">{{carlist.count}}</span> <span>cars available</span></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-3">
-                            <label for="cf-1">Where you from</label>
-                            <input type="text" id="cf-1" placeholder="Your pickup address" class="form-control">
+                            <label for="cf-1">Vendor</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="vendor">
+                                <option value disabled selected>Vendor</option>
+                                {% for vendor in vendor_list %}
+                                <option value="{{vendor}}">{{vendor}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="cf-2">Where you go</label>
-                            <input type="text" id="cf-2" placeholder="Your drop-off address" class="form-control">
+                            <label for="cf-2">Model</label>
+                            <<select class="form-control" id="exampleFormControlSelect1" name="model">
+                                <option value disabled selected>Model</option>
+                                {% for model in model_list %}
+                                <option value="{{model}}">{{model}}</option>
+                                {% endfor %}
+                                </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="cf-3">Journey date</label>
-                            <input type="text" id="cf-3" placeholder="Your pickup address"
-                                class="form-control datepicker px-3">
+                            <label for="cf-3">Engine</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="engine">
+                                <option value disabled selected>Engine</option>
+                                {% for engine in engine_list %}
+                                <option value="{{engine}}">{{engine}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="cf-4">Return date</label>
-                            <input type="text" id="cf-4" placeholder="Your pickup address"
-                                class="form-control datepicker px-3">
+                            <label for="cf-4">Transmission</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="transmision">
+                                <option value disabled selected>Transmission</option>
+                                {% for transmission in transmission_list %}
+                                <option value="{{transmission}}">{{transmission}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <input type="submit" value="Submit" class="btn btn-primary">
+                            <input type="submit" value="Search" class="btn btn-primary">
+                            <input type="reset" value="reset" class="btn btn-primary" />
                         </div>
                     </div>
                 </form>
@@ -81,6 +100,29 @@
                                     <span class="icon-star text-warning"></span>
                                     <span class="icon-star text-warning"></span>
                                     <span class="icon-star text-warning"></span>
+                                </div>
+                                <div class="rating row d-flex justify-content-center">
+                                    {% if car.rating == 1 %}
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    {% elif car.rating == 2 %}
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    {% elif car.rating == 3 %}
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    {% elif car.rating == 4 %}
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    {% elif car.rating == 5 %}
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    <span class="icon-star text-warning"><i class="fas fa-star"></i></span>
+                                    {% endif %}
                                 </div>
                                 <div class="rent-price"><span>{{car.price}}$/</span>day</div>
                             </div>

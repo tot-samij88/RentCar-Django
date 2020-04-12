@@ -433,7 +433,8 @@ h1, h2, h3, h4, h5,
 .site-navbar {
   margin-bottom: 0px;
   z-index: 1999;
-  position: absolute;
+  /* position: absolute; */
+  background-color: #000;
   top: 0;
   width: 100%;
   padding: 1rem; }
@@ -1632,6 +1633,7 @@ h1, h2, h3, h4, h5,
 }
 .mmm{
   margin-top: 50px;
+  height: 500px
 }
 .mid{
   margin-top: 25px;
@@ -1639,8 +1641,12 @@ h1, h2, h3, h4, h5,
 }
 .seler{
   background-color: #f3fafd;
+  height: 350px
 }
-
+.specs{
+  list-style-type: none;
+  margin-left: -38px;
+}
 
 
 
@@ -1658,4 +1664,49 @@ h1, h2, h3, h4, h5,
 }
 .tg-vb{
   color: #364d59;
+}
+
+.register-form{
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+
+.topchek{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.singl-stars{
+  font-size: 20px;
+  margin-left: 0px;
+}
+a >.left{
+  height: 100px;
+  width: 200;
+  color: white;
+  background-color: #000;
+}
+.pprev{
+  height: 50px;
+  width: 50px;
+  margin-top: 150px;
+  margin-left: 15px;
+  
+}
+.nnext{
+  height: 50px;
+  width: 50px;
+  margin-top: 150px;
+  margin-left: 15px;
+  
+}
+.Deteil{
+  font-size: 20px;
+  font-weight: bold;
+}
+.about_deteil{
+  font-size: 20px;
+  font-weight: bold;
+}
+.list_for_deteil{
+  width: 565px;
 }
