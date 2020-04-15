@@ -1710,3 +1710,12 @@ a >.left{
 .list_for_deteil{
   width: 565px;
 }
+
+/* For DASHBOARD */
+.korotko{
+  padding-top:20px;
+  background:#f8f8f8
+}
+.cont{
+  color: white;
+}
