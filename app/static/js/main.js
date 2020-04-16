@@ -319,3 +319,9 @@ jQuery(document).ready(function($) {
 
 
 });
+
+function SendForm(){
+	let logout = document.querySelector("#logout");
+}
+let send_logout_form = document.querySelector(".send_logout_form")
+send_logout_form.addEventListener("click",SendForm)

@@ -60,6 +60,7 @@
                 <p>No Managers Aviable</p>
             </div>
             {% endif %}
+
         </div>
 
         <!-- Carousel here https://stackoverflow.com/questions/30119351/how-to-make-an-object-slider-in-django -->
@@ -72,7 +73,8 @@
                     <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
                 <div class="row">
-                    <a href="#myCarousel" class="btn btn-primary col-1 d-flex align-items-center pprev" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <a href="#myCarousel" class="btn btn-primary col-1 d-flex align-items-center pprev" role="button"
+                        data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </a>
                     <div class="carousel-inner col-9 ">
                         <div class="carousel-item active">
@@ -88,8 +90,10 @@
                             <img class="img-single-car" src="{{ car.photo_3.url }}" alt="Third slide">
                         </div>
                     </div>
-                    
-                    <a href="#myCarousel" class="btn btn-primary custom-next col-1 d-flex align-items-center nnext" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+
+                    <a href="#myCarousel" class="btn btn-primary custom-next col-1 d-flex align-items-center nnext"
+                        role="button" data-slide="next"><span class="carousel-control-next-icon"
+                            aria-hidden="true"></span></a>
                 </div>
             </div>
         </div>
@@ -103,47 +107,82 @@
 <div class="container-fluid">
     <div class="container">
         <div class="row">
-            <div class="offset-1  d-flex action">
-                <a href="{% url 'contact'%}" class="btn btn-primary">Rent Now</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-8 offset-4">
-                <h3>{{car.vendor}} {{car.model}} 1996</a></h3>
-                <ul class="specs">
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Color</span>
-                        <span class="spec about_deteil">{{car.color}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Engine</span>
-                        <span class="spec about_deteil">{{car.engine}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Minimun age</span>
-                        <span class="spec about_deteil">{{car.minimum_age}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Doors</span>
-                        <span class="spec about_deteil">{{car.doors}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Seats</span>
-                        <span class="spec about_deteil">{{car.seats}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Transmision</span>
-                        <span class="spec about_deteil">{{car.transmision}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between list_for_deteil">
-                        <span class="Deteil">Eat fuel</span>
-                        <span class="spec about_deteil">{{car.fuel}} L/100km</span>
-                    </li>
-                </ul>
-            </div>
-
+            <form action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                <input type="hidden" name="user_id" value="{{ user.id }}" />
+                {% else %}
+                <input type="hidden" name="user_id" value="0" />
+                {% endif %}
+                <input type="hidden" name="car_id" value="{{ car.id }}" />
+                <input type="hidden" name="car_name" value="{{ car.model}}" />
+                <input type="hidden" name="car_manager" value="{{ car.carmanager }}" />
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" {% if user.is_authenticated %}
+                        value="{{user.first_name}}" {% endif %} required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" name="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" name="email" class="form-control" {% if user.is_authenticated %}
+                        value="{{user.email}}" {% endif %} required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="d-flex action">
+                    <button type="submit" class="btn btn-primary">Rent Now</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="row">
+    <div class="col-8 offset-4">
+        <h3>{{car.vendor}} {{car.model}} 1996</a></h3>
+        <ul class="specs">
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Color</span>
+                <span class="spec about_deteil">{{car.color}}</span>
+            </li>
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Engine</span>
+                <span class="spec about_deteil">{{car.engine}}</span>
+            </li>
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Minimun age</span>
+                <span class="spec about_deteil">{{car.minimum_age}}</span>
+            </li>
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Doors</span>
+                <span class="spec about_deteil">{{car.doors}}</span>
+            </li>
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Seats</span>
+                <span class="spec about_deteil">{{car.seats}}</span>
+            </li>
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Transmision</span>
+                <span class="spec about_deteil">{{car.transmision}}</span>
+            </li>
+            <li class="d-flex justify-content-between list_for_deteil">
+                <span class="Deteil">Eat fuel</span>
+                <span class="spec about_deteil">{{car.fuel}} L/100km</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</div>
 </div>
 
 {% endblock %}
