@@ -19,6 +19,8 @@ pipeline  {
                 }
             }
         }
+
+
         // stage("docker login") {
         //     steps {
         //         echo " ============== docker login =================="
@@ -37,6 +39,7 @@ pipeline  {
         //         '''
         //     }
         // }
+        
         // stage("docker stop") {
         //     steps {
         //         echo " ============== stoping all images =================="
