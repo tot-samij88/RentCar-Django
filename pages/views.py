@@ -8,6 +8,7 @@ from .cars_info import *
 def index(request):
     carlist = CarsList.objects.all().filter(is_published=True)
     query = CarsList.objects.order_by("vendor")
+    random_car = CarsList.objects.order_by('?')[0]
     if "vendor" in request.GET:
         vendor = request.GET["vendor"]
         if vendor:
@@ -29,10 +30,11 @@ def index(request):
         "title": "Welcom",
         "subtitle": "This is a template for a simple marketing or informational website. It includes a large callout called ajumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.",
         "carlist": query,
-        "vendor_list":vendor_list,
-        "model_list":model_list,
-        "engine_list":engine_list,
-        "transmission_list":transmission_list
+        "vendor_list": vendor_list,
+        "model_list": model_list,
+        "engine_list": engine_list,
+        "transmission_list": transmission_list,
+        "random_car": random_car
     }
     return render(request, 'pages/index.html', context)
 
@@ -94,10 +96,10 @@ def search(request):
             query = query.filter(transmision__iexact=transmision)
     context = {
         "carlist": query,
-        "vendor_list":vendor_list,
-        "model_list":model_list,
-        "engine_list":engine_list,
-        "transmission_list":transmission_list,
-        
+        "vendor_list": vendor_list,
+        "model_list": model_list,
+        "engine_list": engine_list,
+        "transmission_list": transmission_list,
+
     }
     return render(request, 'pages/search.html', context)

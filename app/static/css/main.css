@@ -1421,23 +1421,15 @@ h1, h2, h3, h4, h5,
 /* carrent */
 .feature-car-rent-box-1 {
   position: relative;
-  padding: 30px;
+  padding: 15px;
+  border-radius: 2%;
   background: #fff; }
-  .feature-car-rent-box-1:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-    width: 100%;
-    background: #007bff; }
   .feature-car-rent-box-1 ul {
     padding: 0;
     margin: 0; }
     .feature-car-rent-box-1 ul li {
       display: block;
-      padding: 20px 0;
+      padding: 5px 0;
       list-style: none;
       border-bottom: 1px solid #efefef;
       margin: 0;
@@ -1718,4 +1710,8 @@ a >.left{
 }
 .cont{
   color: white;
+}
+.small_car{
+  height: 300px;
+  width: 650px;
 }

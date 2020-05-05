@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static  %}
 {% block content %}
-{% include "partials/_header_about.html" %}
 
 
 <div class="container mmm">
     <div class="row">
         <div class="col-12">
+            {% include 'partials/_alerts.html' %}
             <div class="single-text">
                 <h3>{{car.vendor}} {{car.model}}</a></h3>
                 <div class="rating row singl-stars">

@@ -6,15 +6,17 @@
         <!-- {% include 'partials/_alerts.html' %}    !!!for messagine!!!-->
         <div class="col-lg-5">
           <div class="feature-car-rent-box-1">
-            <h3>Range Rover S7</h3>
+            {% if random_car %}
+            <h3>{{random_car.vendor}} {{random_car.model}}</h3>
+            <img src="{{ random_car.photo_main.url }}" alt="cars_list" class="img-fluid small_car">
             <ul class="list-unstyled">
               <li>
                 <span>Doors</span>
-                <span class="spec">4</span>
+                <span class="spec">{{random_car.doors}}</span>
               </li>
               <li>
                 <span>Seats</span>
-                <span class="spec">6</span>
+                <span class="spec">{{random_car.seats}}</span>
               </li>
               <li>
                 <span>Lugage</span>
@@ -22,17 +24,17 @@
               </li>
               <li>
                 <span>Transmission</span>
-                <span class="spec">Automatic</span>
+                <span class="spec">{{random_car.transmission}}</span>
               </li>
               <li>
                 <span>Minium age</span>
-                <span class="spec">Automatic</span>
+                <span class="spec">{{random_car.minimum_age}}</span>
               </li>
             </ul>
             <div class="d-flex align-items-center bg-light p-3">
-              <span>$150/day</span>
+              <span style="color: red;">${{random_car.price}}/day</span>
               <a href="{% url 'contact' %}" class="ml-auto btn btn-primary">Rent Now</a>
-            </div>
+            </div>{% endif %}
           </div>
         </div>
       </div>
