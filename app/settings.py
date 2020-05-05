@@ -152,7 +152,7 @@ MESSAGE_TAGS = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'gorbanoleg8888@gmail.com'
-EMAIL_HOST_PASSWORD = 'oleg2002'
+EMAIL_HOST_PASSWORD = 'yourpassword'
 EMAIL_USE_TLS = True
 
 
